@@ -1,65 +1,192 @@
-# 💬 Chat Message API
+# 💬 Chat Message API — Guía paso a paso
 
-API RESTful profesional para procesamiento de mensajes de chat desarrollada con FastAPI.
+Guía práctica (en español) para clonar, ejecutar y probar este proyecto. La primera opción recomendada es usar Docker; como alternativa está la instalación con entorno virtual.
 
 ---
 
-## ⚡ Inicio Rápido (5 minutos)
+## Tabla rápida
 
-Para iniciar el proyecto rápidamente, siga los siguientes pasos:
+- **Recomendado (rápido):** Docker + docker compose
+- **Alternativa:** Entorno virtual (`venv`) y `uvicorn`
+- **Tests:** Ejecutar dentro del contenedor (comandos incluidos)
+- **Docs:** Swagger UI en http://localhost:8000/docs
 
-### 1. Verificar instalación de Python 3.10+
+---
+
+## 1) Clonar el repositorio
+
+Abre una terminal y ejecuta:
+
 ```bash
-python --version
-```
-
-### 2. Navegar a la carpeta del proyecto
-```bash
+git clone <repository-url>
 cd chat-api
 ```
 
-### 3. Crear y activar el entorno virtual
+Sustituye `<repository-url>` por la URL real del repositorio.
 
-**Windows:**
+## Importante: crear `.env` desde `.env.example` (OBLIGATORIO)
+
+El repositorio incluye un archivo de ejemplo de variables de entorno `.env.example`. Es obligatorio crear una copia local llamada `.env` antes de ejecutar la aplicación o los tests.
+
+Windows:
+
+```powershell
+copy .env.example .env
+```
+
+Linux / macOS:
+
+```bash
+cp .env.example .env
+```
+
+Luego edita `.env` para ajustar valores sensibles (credenciales, URLs, etc.). Asegúrate de no subir `.env` al repositorio: el proyecto ya ignora `.env` mediante `.gitignore`.
+
+## 2) Opción recomendada: Ejecutar con Docker (rápido y reproducible)
+
+1. Construir y levantar con Docker Compose:
+
+```bash
+docker compose up --build -d
+```
+
+2. Verifica que el servicio esté corriendo (puertos publicados):
+
+```bash
+docker compose ps
+```
+
+3. La API debería quedar disponible en http://localhost:8000 y la documentación en http://localhost:8000/docs
+
+Nota: Si tu archivo `docker-compose.yml` define otro nombre de servicio, sustituye `docker compose exec <service>` por el nombre real del servicio.
+
+Comandos útiles con Docker:
+
+- Abrir logs:
+
+```bash
+docker compose logs -f
+```
+
+- Parar y eliminar contenedores:
+
+```bash
+docker compose down
+```
+
+## 3) Alternativa: Ejecutar localmente con entorno virtual (si no usas Docker)
+
+1. Crear y activar el entorno virtual
+
+Windows:
+
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-**Linux/Mac:**
+Linux / macOS:
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 4. Instalar las dependencias
+2. Instalar dependencias:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Ejecutar la aplicación
+3. Ejecutar la aplicación (desarrollo):
+
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-### 6. Acceder a la documentación
+Luego abre la documentación en http://localhost:8000/docs
 
-**Windows:**
+---
+
+## 4) Ejecutar tests dentro del contenedor (recomendado)
+
+Usando Docker Compose (reemplaza `<service>` por el nombre del servicio en tu `docker-compose.yml`, por ejemplo `api` o `app`):
+
+```bash
+# Ejecutar todos los tests
+docker compose exec <service> pytest -q
+
+# Ejecutar tests con cobertura (genera html en htmlcov/)
+docker compose exec <service> pytest --cov=app --cov-report=html --cov-report=term
+
+# Ejecutar un test específico
+docker compose exec <service> pytest tests/unit/test_message_service_simple.py -q
+```
+
+Si necesitas un contenedor temporal para ejecutar tests (sin compose):
+
+```bash
+docker build -t chat-api .
+docker run --rm -v %cd%:/app -w /app chat-api pytest -q
+```
+
+(En Linux/macOS sustituye `%cd%` por `$(pwd)`.)
+
+## 5) Abrir la documentación (Swagger / ReDoc)
+
+Con la app en ejecución (Docker o `uvicorn`) abre:
+
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+En Windows puedes abrir la URL desde la terminal:
+
 ```bash
 start http://localhost:8000/docs
 ```
 
-**Linux:**
+En Linux/macOS:
+
 ```bash
 xdg-open http://localhost:8000/docs
-```
-
-**Mac:**
-```bash
+# o
 open http://localhost:8000/docs
 ```
 
-La API estará disponible en http://localhost:8000
+## 6) Comandos rápidos útiles
+
+```bash
+# Levantar en segundo plano con rebuild
+docker compose up --build -d
+
+# Ver logs
+docker compose logs -f
+
+# Parar y limpiar
+docker compose down
+
+# Ejecutar localmente (venv)
+uvicorn app.main:app --reload
+
+# Ejecutar tests localmente
+pytest -q
+```
+
+## 7) Solución de problemas rápida
+
+- Si el puerto 8000 está ocupado, cámbialo a 8080 en el comando `uvicorn` o en `docker-compose.yml`.
+- Si `docker compose exec <service>` falla, comprueba el nombre del servicio con `docker compose ps`.
+
+---
+
+## Estructura del proyecto
+
+Consulta la estructura en el repositorio (carpeta `app/`, `tests/`, `docker-compose.yml`, `Dockerfile`, etc.).
+
+---
+
+## Nota
+He actualizado este archivo para priorizar Docker como primera opción y agregar los comandos solicitados para ejecutar tests y abrir la documentación.
 
 ---
 
