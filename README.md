@@ -134,33 +134,22 @@ xdg-open http://localhost:8000/docs
 open http://localhost:8000/docs
 ```
 
-## Comandos de referencia rápida
-
-```bash
-# Docker - Operaciones principales
-docker compose up --build -d    # Construir y ejecutar
-docker compose ps               # Ver estado
-docker compose logs -f          # Ver logs
-docker compose down             # Detener servicios
-
-# Tests
-docker compose exec <service> pytest                    # Todos los tests
-docker compose exec <service> pytest --cov=app         # Con cobertura
-
-# Ejecución local
-uvicorn app.main:app --reload   # Servidor desarrollo
-pytest                          # Tests locales
-```
-
-## Solución de problemas comunes
-
-- **Puerto ocupado:** Modifique el puerto en `docker-compose.yml` o use `--port 8080` con uvicorn
-- **Servicio no encontrado:** Verifique el nombre del servicio con `docker compose ps`
-- **Permisos de base de datos:** Asegúrese de tener permisos de escritura en el directorio del proyecto
-
 ---
 
-## Referencia de API y documentación técnica
+## Características del proyecto
+
+- Recepción y validación de mensajes de chat  
+- Procesamiento automático de contenido (conteo de palabras, caracteres, etc.)
+- Filtrado de contenido inapropiado configurable
+- Rate limiting (límites por minuto y por hora)
+- Almacenamiento en base de datos SQLite
+- Recuperación de mensajes con paginación
+- Filtrado por tipo de remitente (user/system)
+- Estadísticas de sesión
+- Manejo robusto de errores con mensajes en español
+- Documentación automática interactiva (Swagger UI y ReDoc)
+- Logging estructurado
+- Cobertura de tests >90%
 
 ## Endpoints Principales
 
@@ -283,7 +272,7 @@ chat-api/
 - **Pytest 7.4.3** - Framework de testing
 - **Python-dotenv 1.0.0** - Gestión de variables de entorno
 
-## Comandos Útiles Rápidos
+## Comandos útiles
 
 ```bash
 # Instalar todo
