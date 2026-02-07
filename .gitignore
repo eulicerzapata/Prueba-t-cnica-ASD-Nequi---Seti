@@ -1,0 +1,235 @@
+# ============================================================================
+# PYTHON
+# ============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ============================================================================
+# ENTORNOS VIRTUALES
+# ============================================================================
+
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ============================================================================
+# TESTING Y COBERTURA
+# ============================================================================
+
+# pytest
+.pytest_cache/
+.cache
+
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Test results
+nosetests.xml
+test-results/
+junit.xml
+
+# ============================================================================
+# BASE DE DATOS
+# ============================================================================
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Database files in data directory
+data/
+!data/.gitkeep
+
+# Specific database files
+chat_messages.db
+test_chat_api.db
+
+# ============================================================================
+# LOGS Y ARCHIVOS TEMPORALES
+# ============================================================================
+
+# Log files
+*.log
+logs/
+*.log.*
+log/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Claude temporary files
+tmpclaude-*
+NUL
+nul
+
+# Python temporary files
+*.bak
+*.backup
+
+# ============================================================================
+# IDEs Y EDITORES
+# ============================================================================
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================================================
+# SISTEMA OPERATIVO
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# DOCUMENTACIÓN Y REPORTES
+# ============================================================================
+
+# Sphinx documentation
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# MkDocs documentation
+/site
+
+# ============================================================================
+# CONFIGURACIÓN ESPECÍFICA DEL PROYECTO
+# ============================================================================
+
+# Environment variables (mantener ejemplo)
+.env.local
+.env.*.local
+
+# Archivos de configuración local
+config.local.py
+settings.local.py
+
+# ============================================================================
+# OTROS
+# ============================================================================
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Profiling data
+*.prof

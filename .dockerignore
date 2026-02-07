@@ -1,0 +1,82 @@
+# ============================================================================
+# .dockerignore - Archivos a excluir del contexto de Docker build
+# ============================================================================
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Testing y cobertura
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+*.cover
+.hypothesis/
+
+# Base de datos local (usar volúmenes en su lugar)
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Logs locales
+*.log
+logs/
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentación
+README.md
+docs/
+
+# Archivos de configuración local
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.backup
+tmpclaude-*
+NUL
+nul
+
+# Testing y CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Datos de desarrollo
+data/

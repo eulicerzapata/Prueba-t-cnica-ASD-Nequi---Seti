@@ -1,0 +1,108 @@
+# Senior QA Engineer Coverage Configuration
+# Comprehensive coverage settings for professional test reporting
+
+[run]
+# Source code paths for coverage analysis
+source = app
+
+# Files to include in coverage reporting
+include = 
+    app/*.py
+    app/**/*.py
+
+# Files to exclude from coverage reporting
+omit = 
+    app/__pycache__/*
+    app/*/__pycache__/*
+    app/*/migrations/*
+    app/tests/*
+    */venv/*
+    */env/*
+    */.venv/*
+    */site-packages/*
+    */test_*.py
+    */tests/*
+    */*_test.py
+    setup.py
+    conftest.py
+
+# Enable branch coverage analysis
+branch = True
+
+# Parallel coverage collection
+parallel = True
+
+# Coverage data file location
+data_file = .coverage
+
+[report]
+# Minimum coverage percentage required
+fail_under = 60
+
+# Precision for coverage percentages
+precision = 2
+
+# Skip covered files in report
+skip_covered = False
+
+# Show missing lines in report
+show_missing = True
+
+# Sort report by coverage percentage
+sort = Cover
+
+# Files to exclude from coverage reporting
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+
+    # Don't complain about missing debug-only code
+    def __repr__
+    if self\.debug
+
+    # Don't complain if tests don't hit defensive assertion code
+    raise AssertionError
+    raise NotImplementedError
+
+    # Don't complain if non-runnable code isn't run
+    if 0:
+    if __name__ .__main__.:
+
+    # Don't complain about abstract methods
+    @(abc\.)?abstractmethod
+
+    # Don't complain about type checking imports
+    if TYPE_CHECKING:
+
+    # Don't complain about pass statements
+    pass
+
+    # Don't complain about ellipsis in protocols
+    \.\.\.
+
+[html]
+# HTML report directory
+directory = htmlcov
+
+# HTML report title
+title = Chat API Coverage Report
+
+# Show contexts in HTML report
+show_contexts = True
+
+# Skip files with no statements
+skip_empty = True
+
+[xml]
+# XML report output file
+output = coverage.xml
+
+[json]
+# JSON report output file
+output = coverage.json
+
+# Pretty print JSON output
+pretty_print = True
+
+# Show execution contexts in JSON
+show_contexts = True
