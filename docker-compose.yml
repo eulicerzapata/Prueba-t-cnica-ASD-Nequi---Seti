@@ -32,12 +32,18 @@ services:
       - MAX_CONTENT_LENGTH=${MAX_CONTENT_LENGTH:-5000}
       - MAX_HOURLY_MESSAGES=${MAX_HOURLY_MESSAGES:-100}
       - MAX_MESSAGES_PER_MINUTE=${MAX_MESSAGES_PER_MINUTE:-10}
+      
+      # Coverage configuration
+      - COVERAGE_FILE=/tmp/.coverage
 
     volumes:
       # Volumen para persistir la base de datos
       - db-data:/app/data
       # Volumen para logs (opcional)
       - ./logs:/app/logs
+      # Volumen temporal para coverage (en memoria)
+      - type: tmpfs
+        target: /tmp
 
     restart: unless-stopped
 

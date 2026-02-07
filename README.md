@@ -1,8 +1,8 @@
 # Chat Message API
 
-API RESTful profesional para procesamiento de mensajes de chat desarrollada con FastAPI.
+API RESTful para procesamiento de mensajes de chat desarrollada con FastAPI.
 
-Esta guía proporciona instrucciones step-by-step para clonar, configurar y ejecutar el proyecto. Se recomienda Docker como método principal de despliegue, con instrucciones alternativas para entornos virtuales locales.
+Esta guía proporciona instrucciones para clonar, configurar y ejecutar el proyecto. Se recomienda Docker como método principal de despliegue, con instrucciones alternativas para entornos virtuales locales.
 
 ## Resumen de opciones
 
@@ -95,23 +95,29 @@ La aplicación estará disponible en http://localhost:8000/docs
 
 **Con Docker Compose (recomendado):**
 
-Reemplace `<service>` por el nombre del servicio definido en `docker-compose.yml`:
-
 ```bash
 # Ejecutar todos los tests
-docker compose exec <service> pytest
+docker compose exec api pytest
 
 # Ejecutar tests con reporte de cobertura
-docker compose exec <service> pytest --cov=app --cov-report=html --cov-report=term
+docker compose exec api pytest --cov=app --cov-report=term
 
 # Ejecutar test específico
-docker compose exec <service> pytest tests/unit/test_message_service_simple.py -v
+docker compose exec api pytest tests/unit/test_message_service_simple.py -v
+
+# Ejecutar tests con verbosidad
+docker compose exec api pytest -v
 ```
 
-**Ejecución local:**
+**Ejecución local (para reporte HTML de cobertura):**
 ```bash
 pytest
 pytest --cov=app --cov-report=html --cov-report=term
+
+# Ver reporte HTML
+start htmlcov/index.html  # Windows
+xdg-open htmlcov/index.html  # Linux
+open htmlcov/index.html  # macOS
 ```
 
 ## Paso 5: Acceder a la documentación
@@ -321,7 +327,3 @@ pip install --upgrade -r requirements.txt
 ### Base de datos no se crea
 
 **Solución:** Verifique los permisos de escritura en la carpeta del proyecto.
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT.
